@@ -33,7 +33,9 @@
             --radius-lg: 16px;
             --radius-xl: 20px;
             --radius-full: 9999px;
+            --transition-fast: 0.2s ease;
             --transition-base: 0.3s ease;
+            --transition-slow: 0.5s ease;
         }
         
         * {
@@ -400,7 +402,21 @@
             font-size: 3.5rem;
             margin-bottom: var(--spacing-md);
             display: block;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            animation: bounce 2s ease infinite;
         }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .problem-card:nth-child(1) .problem-emoji { animation-delay: 0s; }
+        .problem-card:nth-child(2) .problem-emoji { animation-delay: 0.2s; }
+        .problem-card:nth-child(3) .problem-emoji { animation-delay: 0.4s; }
+        .problem-card:nth-child(4) .problem-emoji { animation-delay: 0.6s; }
+        .problem-card:nth-child(5) .problem-emoji { animation-delay: 0.8s; }
+        .problem-card:nth-child(6) .problem-emoji { animation-delay: 1s; }
         
         .problem-title {
             font-size: clamp(1.2rem, 2vw, 1.5rem);
@@ -498,6 +514,8 @@
         .card-image {
             font-size: 4rem;
             margin-bottom: var(--spacing-sm);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            animation: bounce 3s ease infinite;
         }
         
         .card-text {
@@ -568,7 +586,17 @@
         .feature-card .icon {
             font-size: 4rem;
             margin-bottom: var(--spacing-md);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            display: inline-block;
+            animation: bounce 3s ease infinite;
         }
+        
+        .feature-card:nth-child(1) .icon { animation-delay: 0s; }
+        .feature-card:nth-child(2) .icon { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) .icon { animation-delay: 0.4s; }
+        .feature-card:nth-child(4) .icon { animation-delay: 0.6s; }
+        .feature-card:nth-child(5) .icon { animation-delay: 0.8s; }
+        .feature-card:nth-child(6) .icon { animation-delay: 1s; }
         
         .feature-card h3 {
             font-size: clamp(1.2rem, 2vw, 1.5rem);
@@ -631,6 +659,12 @@
             border-radius: var(--radius-full);
             font-weight: 800;
             font-size: 0.85rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         
         .pricing-card h3 {
@@ -742,12 +776,114 @@
             color: var(--primary-color);
         }
         
+        /* FAQ 섹션 */
+        .faq {
+            background: var(--bg-primary);
+        }
+        
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            margin-bottom: var(--spacing-md);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(102,126,234,0.1);
+            transition: all var(--transition-base);
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 32px rgba(102,126,234,0.2);
+        }
+        
+        .faq-item[open] {
+            box-shadow: 0 12px 40px rgba(102,126,234,0.3);
+            border-color: var(--primary-color);
+        }
+        
+        .faq-question {
+            padding: var(--spacing-md) var(--spacing-lg);
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            cursor: pointer;
+            list-style: none;
+            position: relative;
+            transition: all var(--transition-fast);
+        }
+        
+        .faq-question::-webkit-details-marker {
+            display: none;
+        }
+        
+        .faq-question::after {
+            content: "▼";
+            position: absolute;
+            right: var(--spacing-lg);
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform var(--transition-base);
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+        
+        .faq-item[open] .faq-question::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+        
+        .faq-question:hover {
+            background: linear-gradient(90deg, rgba(102,126,234,0.05), transparent);
+        }
+        
+        .faq-answer {
+            padding: 0 var(--spacing-lg) var(--spacing-md) var(--spacing-lg);
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
         /* 최종 CTA */
         .final-cta {
             background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             color: white;
             text-align: center;
             padding: 120px var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+            animation: pulse 4s ease infinite;
+        }
+        
+        .final-cta .container {
+            position: relative;
+            z-index: 1;
         }
         
         .final-cta h2 {
@@ -1132,27 +1268,87 @@
         </div>
     </section>
 
-    <!-- 최종 CTA -->
-    <section class="final-cta">
+    <!-- FAQ 섹션 -->
+    <section class="faq">
         <div class="container">
-            <h2>3초의 마법을 지금 경험하세요</h2>
-            <p>3개월 무료 체험 · 선착순 30명 · 조건 없음</p>
-            <a href="#pricing" class="cta-button">무료로 시작하기 →</a>
-        </div>
-    </section>
-
-    <script>
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 50;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 20 + 's';
-            particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-            particlesContainer.appendChild(particle);
-        }
-    </script>
-</body>
-</html>
+            <h2>자주 묻는 질문</h2>
+            <p class="subtitle">궁금한 점을 해결해드립니다</p>
+            
+            <div class="faq-list">
+                <details class="faq-item">
+                    <summary class="faq-question">💬 문자 발송 비용이 정말 0원인가요?</summary>
+                    <div class="faq-answer">
+                        네! 통신사에서 기본 제공하는 무료 문자(월 2,000~3,000건)를 활용하기 때문에 
+                        추가 발송 비용이 전혀 발생하지 않습니다. 이미 내고 있는 통신 요금 안에 포함된 
+                        무료 문자를 똑똑하게 활용하는 것입니다.
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">⏰ 정말 통화 후 3초 만에 발송되나요?</summary>
+                    <div class="faq-answer">
+                        네! 통화 종료와 동시에 자동으로 감성 메시지가 발송됩니다. 
+                        고객이 전화를 끊는 순간, 가장 감정이 따뜻할 때 메시지가 도착하기 때문에 
+                        거부감 없이 자연스럽게 받아들여집니다. 이 타이밍이 바로 "3초의 마법"입니다!
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">📱 어떻게 자동으로 발송되나요?</summary>
+                    <div class="faq-answer">
+                        한 번만 설정하면 끝! 고객과 통화가 종료되면 자동으로 설정된 감성 카드가 
+                        발송됩니다. 별도로 버튼을 누르거나 조작할 필요가 전혀 없습니다. 
+                        깜빡할 일도, 귀찮을 일도 없습니다.
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">🎨 감성 이미지 카드와 무빙 카드의 차이는?</summary>
+                    <div class="faq-answer">
+                        감성 이미지 카드는 예쁜 디자인과 따뜻한 문구가 담긴 정지 이미지 카드이고, 
+                        감성 무빙 카드는 여기에 움직임(GIF)이 더해져 더욱 생동감 있고 특별한 느낌을 
+                        전달합니다. 일상적인 안부는 이미지 카드로, 특별한 순간은 무빙 카드로 
+                        차별화된 감동을 선사하세요!
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">❌ 왜 평범한 문자가 아니라 감성 카드인가요?</summary>
+                    <div class="faq-answer">
+                        "전화 주셔서 감사합니다" 같은 평범한 텍스트 문자는 차갑고 기계적이어서 
+                        고객의 마음을 움직이지 못합니다. 하지만 전문 디자이너가 만든 감성 카드는 
+                        시각적으로 아름답고, 따뜻한 감성이 담겨 있어 고객의 마음에 오래 남습니다. 
+                        <strong>3초의 타이밍 + 감성 메시지 = 진짜 마법!</strong>
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">🔒 계약 기간이 있나요?</summary>
+                    <div class="faq-answer">
+                        아니요! 계약 기간 없이 언제든 시작하고 중단할 수 있습니다. 
+                        무료 체험 후에도 자동 결제되지 않으며, 원하실 때 구독하시면 됩니다.
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">💼 영업인도 사용할 수 있나요?</summary>
+                    <div class="faq-answer">
+                        물론입니다! 보험, 부동산, B2B 영업 등 모든 영업 분야에서 활용 가능합니다. 
+                        상담 후 자동으로 감사 메시지를 보내고, 정기적으로 안부 인사를 전하여 
+                        고객과의 관계를 지속적으로 유지할 수 있습니다.
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">🎯 업종별 맞춤 메시지가 있나요?</summary>
+                    <div class="faq-answer">
+                        네! 음식점, 카페, 병원, 치과, 헬스장, 미용실, 네일샵, 보험, 부동산 등 
+                        다양한 업종별로 최적화된 감성 메시지를 제공합니다. 프리미엄 플랜에서는 
+                        업체명이 포함된 완전 맞춤 제작도 가능합니다.
+                    </div>
+                </details>
+                
+                <details class="faq-item">
+                    <summary class="faq-question">📱 SNS에서도 활용할 수 있나요?</summary>
+                    <div class="faq-answer">
+                        네! 제공되
