@@ -718,9 +718,78 @@
         .final-cta h2 { font-size: 3rem; margin-bottom: var(--spacing-md); color: white; }
         .final-cta p { font-size: 1.25rem; margin-bottom: var(--spacing-lg); opacity: 0.9; }
         .final-cta .cta-button { background: white; color: var(--primary-color); font-size: 1.25rem; padding: 20px 48px; }
+     /* =========================================
+           10. Footer (푸터)
+           ========================================= */
+        .footer {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #ffffff;
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-lg);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-contact {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .footer-contact p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+        }
+
+        .footer-company {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .footer-company p {
+            margin: 0.3rem 0;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+            align-items: flex-end;
+        }
+
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--spacing-md);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+        }
 
         /* =========================================
-           10. 반응형 미디어 쿼리
+           11. 반응형 미디어 쿼리
            ========================================= */
         @media (max-width: 968px) {
             .magic-content, .comparison-grid { grid-template-columns: 1fr; }
@@ -740,6 +809,19 @@
             .faq-question { font-size: 1rem; padding: var(--spacing-sm); }
             .faq-icon { font-size: 1.2rem; }
             .final-cta h2 { font-size: 2.25rem; }
+            
+            /* 푸터 모바일 반응형 */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-lg);
+            }
+            .footer-right {
+                align-items: flex-start;
+            }
+            .footer-brand {
+                font-size: 1.3rem;
+            }
+        }
         }
     </style>
 </head>
@@ -1298,6 +1380,34 @@
   }
 }
 </style>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-left">
+                    <div class="footer-brand">따뜻한 콜백연구소</div>
+                    <div class="footer-contact">
+                        <p>📞 고객센터: 1599-3660</p>
+                        <p>📧 이메일: onix7@naver.com</p>
+                    </div>
+                    <div class="footer-company">
+                        <p>상호명: (주)한국상공 | 대표: 이경호</p>
+                        <p>사업자등록번호: 398-59-00564</p>
+                        <p>통신판매업신고번호: 서울강남-2022-04518</p>
+                        <p>주소: 서울시 강남구 영동대로 602 미켈란빌딩 6F</p>
+                    </div>
+                </div>
+                <div class="footer-right">
+                    <a href="#" class="footer-link">개인정보 처리방침</a>
+                    <a href="#" class="footer-link">이용약관</a>
+                    <a href="https://www.ftc.go.kr/bizCommPop.do?wrkr_no=3985900564" target="_blank" class="footer-link">사업자 정보 확인</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright ⓒ www.koreai.kr</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
