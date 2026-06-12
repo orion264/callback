@@ -398,21 +398,10 @@
             font-size: 3.5rem;
             margin-bottom: var(--spacing-md);
             display: block;
-            animation: bounce 2s ease-in-out infinite;
+            /* animation: bounce 2s ease-in-out infinite; */
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .problem-card:nth-child(1) .problem-emoji { animation-delay: 0s; }
-        .problem-card:nth-child(2) .problem-emoji { animation-delay: 0.2s; }
-        .problem-card:nth-child(3) .problem-emoji { animation-delay: 0.4s; }
-        .problem-card:nth-child(4) .problem-emoji { animation-delay: 0.6s; }
-        .problem-card:nth-child(5) .problem-emoji { animation-delay: 0.8s; }
-        .problem-card:nth-child(6) .problem-emoji { animation-delay: 1s; }
-        
+           
         .problem-title {
             font-size: clamp(1.2rem, 2vw, 1.5rem);
             font-weight: 700;
